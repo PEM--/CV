@@ -144,9 +144,13 @@ module.exports = (grunt) ->
         files: 'app/**'
         tasks: ['build']
 
-  # PDF task
-  #grunt.registerTask 'pdf', 'PDF the site', ->
-    #phantomjs = (require 'grunt-lib-phantomjs').init grunt
+    notify:
+      build:
+        options:
+          message: 'Build is ready'
+      express:
+        options:
+          message: 'Server is on'
 
   # Build tasks
   grunt.registerTask 'build', [
@@ -160,9 +164,11 @@ module.exports = (grunt) ->
     #'imagemin'
     'jade'
     #'markdown'
+    'notify:build'
   ]
   # Default task
   grunt.registerTask 'default', [
-      'clean', 'copy', 'imagemin', 'svgmin', 'build', 'watch'
-      #'clean', 'copy', 'imagemin', 'svgmin', 'build', 'express', 'open', 'watch'
+      #'clean', 'copy', 'imagemin', 'svgmin', 'build', 'watch'
+      'clean', 'copy', 'imagemin', 'svgmin', 'build'
+      'express', 'notify:express', 'open', 'watch'
     ]

@@ -59,21 +59,46 @@
 body, * {
   font-family: 'Trebuchet MS', Calibry, Sans;
 }
-body {
+.page {
+  width: 21cm - 2*0.65cm;
+  height: 28cm - 0.65cm - 0.9cm;
+  padding: 0em;
   background-image: url(../img/phineo_bg.svg);
   background-position: center;
   background-repeat: no-repeat;
 }
-.page-break {
+footer {
   page-break-after: always;
+  width: 21cm - 2*0.65cm - 2cm;
+  height: 1.7cm - 0.1cm;
+  padding: 0.5em 1cm 0 1cm;
+  >.middle {
+    position: absolute;
+    width: inherit;
+    >p {
+      text-align: center;
+      margin: 0;
+      &:first-of-type {
+        font-weight: bold;
+      }
+    }
+  }
+  >.right {
+    position: absolute;
+    width: inherit;
+    >p {
+      text-align: right;
+      margin: 0;
+    }
+  }
 }
 h1 {
   font-family: 'Trebuchet MS', Calibry, Sans;
   font-size: 1.7em;
   font-weight: bold;
   text-align: center;
-  margin: 0.5em 0.5em;
-  padding-top: 5em;
+  margin: 0.1em 0;
+  padding-top: 4em;
   background-image: url(../img/phineo_logo_big.png);
   background-size: 12em;
   background-position: top right;
@@ -84,8 +109,7 @@ h2 {
   font-size: 1.7em;
   font-weight: 100;
   text-align: center;
-  margin-top: 0.1em;
-  margin-bottom: 2em;
+  margin: 0.1em 0 0.2em 0;
 }
 h3 {
   font-family: 'Trebuchet MS', Calibry, Sans;
@@ -95,8 +119,88 @@ h3 {
   color: white;
   background-color: blue;
   border-radius: 0.3em;
-  margin: 2em 0.5em 1em 0.5em;
+  margin: 0 0 0.5em 0;
   padding: 0.5em;
   background-image: linear-gradient(to right, #248ac6, #165377);
   box-shadow: 0.2em 0.2em 0.3em @gray;
+}
+h3.inner {
+  margin: 2em 0 1em 0;
+}
+.skills {
+  display: table;
+  margin: 0.5em 0 1em 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  >li {
+    display: table-row;
+    >div {
+      padding-left: 0.5em;
+      border: 1px solid @gray;
+      display: table-cell;
+      width: 30%;
+    }
+    >ul {
+      padding-left: 0.5em;
+      border: 1px solid @gray;
+      display: table-cell;
+      width: 70%;
+      >li {
+        display: inline;
+        &:after {
+          content: ', ';
+        }
+        &:last-of-type:after {
+          content: '.';
+        }
+      }
+    }
+  }
+}
+header {
+  border: 1px solid @gray;
+  display: table;
+  width: 100%;
+  padding: 0.75em 2em;
+  font-size: 1.1em;
+  >ul {
+    display: table-row;
+    >li {
+      display: block;
+      &:first-of-type {
+        display: table-cell;
+        width: 20%;
+      }
+      &:nth-of-type(2) {
+        font-weight: bold;
+        padding-bottom: 0.3em;
+      }
+    }
+  }
+}
+.environment {
+  >li {
+    display: inline;
+    &:after {
+      content: ', ';
+    }
+    &:last-of-type:after {
+      content: '.';
+    }
+  }
+}
+.formation, .langues, .renseignements {
+  display: table;
+  width: 100%;
+  >ul {
+    display: table-row;
+    >li {
+      display: block;
+      &:first-of-type {
+        display: table-cell;
+        width: 20%;
+      }
+    }
+  }
 }

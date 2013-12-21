@@ -27,6 +27,6 @@
     "grunt-clowncar": "~0.0.1",
     "matchdep": "~0.3.0",
     "grunt-markdown": "~0.4.0",
-    "grunt-lib-phantomjs": "~0.4.0"
+    "grunt-notify": "~0.2.16"
   }
 }
