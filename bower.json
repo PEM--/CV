@@ -1,0 +1,19 @@
+{
+  "name": "CV",
+  "version": "0.0.0",
+  "authors": [
+    "PEM-- <pemarchandet@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "~4.0.3",
+    "bootstrap": "~3.0.2"
+  }
+}

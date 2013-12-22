@@ -1,7 +1,8 @@
 # Grunt tasks
 module.exports = (grunt) ->
-  # Load all tasks
-  ((require 'matchdep').filterDev 'grunt-*').forEach grunt.loadNpmTasks
+  # Load all tasks except tasks requiring special initialization
+  ((require 'matchdep').filterDev ['grunt-*', '!*phantomjs']).
+    forEach grunt.loadNpmTasks
 
   # Project configuration
   grunt.initConfig
