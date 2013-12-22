@@ -25,11 +25,6 @@ module.exports = (grunt) ->
         cwd: 'bower_components/font-awesome/'
         src: ['fonts/*']
         dest: 'dist/css/'
-      #clowned:
-        #expand: true
-        #cwd: 'tmp'
-        #src: ['*-*.jpg']
-        #dest: 'dist/'
 
     less:
       all:
@@ -39,17 +34,6 @@ module.exports = (grunt) ->
     concat:
       js:
         src: [
-          #'bower_components/jquery/jquery.min.js'
-          #'bower_components/bootstrap/js/transition.js'
-          #'bower_components/bootstrap/js/dropdown.js'
-          #'bower_components/bootstrap/js/scrollspy.js'
-          #'bower_components/bootstrap/js/button.js'
-          #'bower_components/bootstrap/js/collapse.js'
-          #'bower_components/bootstrap/js/carousel.js'
-          #'bower_components/angular/angular.min.js'
-          #'bower_components/angular-route/angular-route.min.js'
-          #'app/js/app.js'
-          #'app/js/controller.js'
           'app/js/<%= pkg.name %>/.js'
         ]
         dest: 'tmp/<%= pkg.name %>.js'
@@ -68,14 +52,6 @@ module.exports = (grunt) ->
           dest: 'dist/img/'
           ext: '.svg'
         }]
-      #clowned:
-        #files: [{
-          #expand: true
-          #cwd: 'tmp/'
-          #src: ['*.svg']
-          #dest: 'tmp/minified/'
-          #ext: '.min.svg'
-        #}]
 
     imagemin:
       options:
@@ -91,19 +67,6 @@ module.exports = (grunt) ->
             dest: 'dist/'
           }]
 
-    #clowncar:
-      #options:
-        #sizes: [1280, 992, 768, 400]
-      #all:
-        #files: [{
-            #expand: true
-            #cwd: 'app/assets/'
-            #src: ['*.jpg']
-            #dest: 'tmp/'
-            #ext: '.svg'
-          #}
-        #]
-
     cssmin:
       minify:
         files:
@@ -115,18 +78,6 @@ module.exports = (grunt) ->
           pretty: false
         files:
           'dist/index.html': ['app/index.jade']
-
-    #markdown:
-      #options:
-        #gfm: true
-      #all:
-        #files: [
-            #expand: true
-            #cwd: 'app/'
-            #src: '*.md'
-            #dest: 'dist/'
-            #ext: '.html'
-          #]
 
     express:
       all:
@@ -159,17 +110,11 @@ module.exports = (grunt) ->
     'concat'
     'uglify'
     'cssmin'
-    #'clowncar'
-    #'svgmin'
-    #'copy'
-    #'imagemin'
     'jade'
-    #'markdown'
     'notify:build'
   ]
   # Default task
   grunt.registerTask 'default', [
-      #'clean', 'copy', 'imagemin', 'svgmin', 'build', 'watch'
       'clean', 'copy', 'imagemin', 'svgmin', 'build'
       'express', 'notify:express', 'open', 'watch'
     ]
