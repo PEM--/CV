@@ -103,6 +103,51 @@ module.exports = (grunt) ->
       express:
         options:
           message: 'Server is on'
+      pdf:
+        options:
+          message: 'PDF is baked'
+
+  # PDF task
+  grunt.registerTask 'pdf', 'Print site as PDF', ->
+    # Special initialization
+    phantomjs = (require 'grunt-lib-phantomjs').init grunt
+    # Handy functions
+    path = require 'path'
+    asset = path.join.bind null, __dirname, 'phantomjs_utils'
+    phantomjs.on 'pdf.ok', (msg) ->
+      grunt.warn 'Started?'
+      console.log 'Started?'
+      grunt.task.run 'notify:pdf'
+    # Cleanup and use an OS notification
+    phantomjs.on 'pdf.done', ->
+      grunt.warn 'Done?'
+      console.log 'Done?'
+      grunt.task.run 'notify:pdf'
+      phantomjs.halt()
+      done()
+    # Pass-through console.log statements
+    phantomjs.on('console', console.log.bind(console))
+    # Error handling
+    phantomjs.on 'fail.load', (url) ->
+      phantomjs.halt()
+      grunt.warn "PhantomJS unable to load: " +
+        "#{url}. Did your project build properly?"
+    phantomjs.on 'fail.timeout', ->
+      console.log asset 'raterize.js'
+      phantomjs.halt()
+      grunt.warn 'PhantomJS timed out.'
+    # Tell Grunt that the task is asynchronous
+    done = @.async()
+    # Spawn a PhantomJS on the build directory
+    #phantomjs.spawn 'dist/index.html',
+    phantomjs.spawn 'test.html',
+      options:
+        timeout: 1000
+        inject: asset 'rasterize.js'
+      done: (err) ->
+        grunt.warn 'Inner done?'
+        console.log 'Done is done?'
+        done()
 
   # Build tasks
   grunt.registerTask 'build', [
@@ -113,6 +158,7 @@ module.exports = (grunt) ->
     'jade'
     'notify:build'
   ]
+
   # Default task
   grunt.registerTask 'default', [
       'clean', 'copy', 'imagemin', 'svgmin', 'build'

@@ -1,0 +1,14 @@
+h4 Moteur de jeux de Loto sur Javacard
+ul
+  li Conception et implémentation en J2ME du moteur. Embarquement sur Javacard. Tests sur téléphones.
+h5 Environnement
+ul.environment
+  li J2ME
+  li Ant
+  li JavaCard
+  li PC/SC lite
+  li C++
+  li SmartCard ISO 7816-4
+h5 Résultats
+ul
+  li Étude de faisabilité & prototypes
